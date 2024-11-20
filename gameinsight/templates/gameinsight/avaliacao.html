@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameInsing - Avaliação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>GameInsing</h1>
+    </header>
+    <main>
+        <section class="featured">
+            <h2>Avaliação de Jogos</h2>
+            <p>Deixe sua opinião sobre os jogos que você jogou!</p>
+        </section>
+        <section>
+            <div class="card" style="max-width: 600px; margin: auto;">
+                <h3>Avalie um Jogo</h3>
+                <form>
+                    <div style="margin-bottom: 10px;">
+                        <label for="game-name">Nome do Jogo:</label>
+                        <input type="text" id="game-name" name="game-name" required style="width: 100%; padding: 8px;">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="rating">Nota (0-10):</label>
+                        <input type="number" id="rating" name="rating" min="0" max="10" required style="width: 100%; padding: 8px;">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="review">Comentário:</label>
+                        <textarea id="review" name="review" rows="5" style="width: 100%; padding: 8px;" required></textarea>
+                    </div>
+                    <button type="submit" style="background-color: #e63946; color: #fff; padding: 10px; border: none; width: 100%; border-radius: 5px;">Enviar Avaliação</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 GameInsing. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
