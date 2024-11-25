@@ -1,19 +1,14 @@
 {% extends "gameinsight/base.html" %}
 {% block bloco%}
 <main>
-    <section class="featured">
-        <h2>Jogo em Destaque</h2>
-        <p>Confira as melhores avaliações do nosso jogo top do momento!</p>
-        <h3>{jogo_destaque.destaque.jogo}</h3>
-    
-    </section>
     <section>
-        <h2 class="section-title">Melhores Avaliações</h2>
+        <h2 class="section-title">Suas Avaliações</h2>
         <div class="grid">
             {%for jogo in jogos%}
             <div class="card">
                 <img src="{{jogo.capa.url}}" alt="{{jogo.nome}}">
                 <h3>{{jogo.nome}}</h3>
+                <p>Comentário: {{jogo.comentario}}</p>
                 <p>Avaliação: {{jogo.nota}}</p>
                 <a href="{% url 'editar_jogo' jogo.id%}">
                     <button type="button" style="background-color: #e63946; color: #fff; padding: 10px; border: none; width: 10%; border-radius: 5px;">Editar</button>
