@@ -24,8 +24,8 @@ class Plataforma(models.Model):
 class Jogo(models.Model):
     nome = models.CharField(max_length=100)
     desenvolvedora = models.CharField(max_length=100)
-    genero = models.ManyToManyField(Genero)
-    plataforma = models.ManyToManyField(Plataforma)
+    genero = models.ForeignKey(Genero, on_delete=models.CASCADE)
+    plataforma = models.ForeignKey(Plataforma, on_delete=models.CASCADE)
     descricao = models.TextField()
     classificacao = models.CharField(max_length=50)
     data_lancamento = models.DateField()
@@ -36,5 +36,4 @@ class Jogo(models.Model):
     def __str__(self):
         return self.nome
     
-class Destaque(models.Model):
-    destaque = models.ManyToManyField(Jogo)
+

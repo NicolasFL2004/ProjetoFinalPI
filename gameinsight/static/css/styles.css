@@ -97,3 +97,22 @@ footer {
     margin-top: 20px;
     color: #aaa;
 }
+
+.fixed-button {
+    background-color: #5e151b;
+    color: #fa0707; 
+    padding: 10px;
+    border: none;
+    border-radius: 5px; 
+    width: 150px; 
+    height: 50px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    display: inline-block;
+    text-align: center; 
+}
+
+.fixed-button:hover {
+    background-color: #350707; 
+}

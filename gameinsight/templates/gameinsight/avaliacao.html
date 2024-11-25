@@ -1,43 +1,62 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameInsing - Avaliação</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>GameInsing</h1>
-    </header>
-    <main>
-        <section class="featured">
-            <h2>Avaliação de Jogos</h2>
-            <p>Deixe sua opinião sobre os jogos que você jogou!</p>
-        </section>
-        <section>
-            <div class="card" style="max-width: 600px; margin: auto;">
-                <h3>Avalie um Jogo</h3>
-                <form>
-                    <div style="margin-bottom: 10px;">
-                        <label for="game-name">Nome do Jogo:</label>
-                        <input type="text" id="game-name" name="game-name" required style="width: 100%; padding: 8px;">
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label for="rating">Nota (0-10):</label>
-                        <input type="number" id="rating" name="rating" min="0" max="10" required style="width: 100%; padding: 8px;">
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label for="review">Comentário:</label>
-                        <textarea id="review" name="review" rows="5" style="width: 100%; padding: 8px;" required></textarea>
-                    </div>
-                    <button type="submit" style="background-color: #e63946; color: #fff; padding: 10px; border: none; width: 100%; border-radius: 5px;">Enviar Avaliação</button>
-                </form>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 GameInsing. Todos os direitos reservados.</p>
-    </footer>
-</body>
-</html>
+{% extends "gameinsight/base.html" %}
+{% block bloco%}
+<main>
+    <section class="featured">
+        <h2>Avaliação de Jogos</h2>
+        <p>Deixe sua opinião sobre os jogos que você jogou!</p>
+    </section>
+    <section>
+        <div class="card" style="max-width: 600px; margin: auto;">
+            <h3>Avalie um Jogo</h3>
+            <form method="post" enctype="multipart/form-data">
+                {%csrf_token %}
+                <div style="margin-bottom: 10px;">
+                    <label for="game-name">Nome do Jogo:</label>
+                    {{form.nome}}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="rating">Capa:</label>
+                    {{form.capa}}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="review">Desenvolvedora:</label>
+                    {{form.desenvolvedora}}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="review">Gênero:</label>
+                    {{form.genero}}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="review">Descrição:</label>
+                    {{form.descricao}}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="review">Classificação:</label>
+                    {{form.classificacao}}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="review">Data de lançamento:</label>
+                    {{form.data_lancamento}}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="review">Plataforma:</label>
+                    {{form.plataforma}}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="review">Nota:</label>
+                    {{form.nota}}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="review">Comentário:</label>
+                    {{form.comentario}}
+                </div>
+                <button style="background-color: #e63946; color: #fff; padding: 10px; border: none; width: 100%; border-radius: 5px;">Enviar Avaliação</button>
+            </form>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>© 2024 GameInsing. Todos os direitos reservados.</p>
+</footer>
+
+{% endblock %}

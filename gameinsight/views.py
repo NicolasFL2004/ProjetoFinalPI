@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
-from .models import Jogo, Destaque
+from .models import Jogo
 from .forms import JogoForm
 # Create your views here.
 def index(request):
     jogos = Jogo.objects.all()
-    jogo_destaque = Destaque.objects.all()
     contexto = {
-        'jogos': jogos,
-        'jogo_destaque': jogo_destaque
+        'jogos': jogos
+ 
     }
     return render(request, 'gameinsight/index.html', contexto)
 
@@ -18,12 +17,12 @@ def novo_jogo(request):
         form = JogoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('index')
+            return redirect('index')
     
     contexto = {
         'form': form
     }
-    return render(request, 'gameinsight/novo_jogo.html', contexto)
+    return render(request, 'gameinsight/avaliacao.html', contexto)
 
 def editar_jogo(request, id):
     jogo = Jogo.objects.get(id=id)
@@ -39,7 +38,7 @@ def editar_jogo(request, id):
     contexto = {
         'form': form
     }
-    return render(request, 'gameinsight/novo_jogo.html', contexto)
+    return render(request, 'gameinsight/avaliacao.html', contexto)
 
 def excluir_jogo(request, id):
     jogo = Jogo.objects.get(id=id)

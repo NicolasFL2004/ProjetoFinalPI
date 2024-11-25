@@ -1,39 +1,35 @@
-{%load static%}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameInsing - Página Inicial</title>
-    <link rel="stylesheet" href="{%static 'css/styles.css'%}">
-</head>
-<body>
-    <header>
-        <h1>GameInsing</h1>
-    </header>
-    <main>
-        <section class="featured">
-            {%for jogo_destaque in jogos_destaque%}
-            <h2>Jogo em Destaque</h2>
-            <p>Confira as melhores avaliações do nosso jogo top do momento!</p>
-            <h3>{jogo_destaque.destaque.jogo}</h3>
-            {%endfor%}
-        </section>
-        <section>
-            <h2 class="section-title">Melhores Avaliações</h2>
-            <div class="grid">
-                {%for jogo in jogos%}
-                <div class="card">
-                    <img src="{{jogo.capa.url}}" alt="{{jogo.nome}}">
-                    <h3>{{jogo.nome}}</h3>
-                    <p>Avaliação: {{jogo.nota}}</p>
-                </div>
-                {%endfor%}
+{% extends "gameinsight/base.html" %}
+{% block bloco%}
+<main>
+    <section class="featured">
+        <h2>Jogo em Destaque</h2>
+        <p>Confira as melhores avaliações do nosso jogo top do momento!</p>
+        <h3>{jogo_destaque.destaque.jogo}</h3>
+    
+    </section>
+    <section>
+        <h2 class="section-title">Melhores Avaliações</h2>
+        <div class="grid">
+            {%for jogo in jogos%}
+            <div class="card">
+                <img src="{{jogo.capa.url}}" alt="{{jogo.nome}}">
+                <h3>{{jogo.nome}}</h3>
+                <p>Avaliação: {{jogo.nota}}</p>
+                <a href="{% url 'editar_jogo' jogo.id%}">
+                    <button type="button" style="background-color: #e63946; color: #fff; padding: 10px; border: none; width: 10%; border-radius: 5px;">Editar</button>
+                    </button>
+                </a>
+                <a href="{% url 'excluir_jogo' jogo.id%}">
+                    <button type="button" style="background-color: #e63946; color: #fff; padding: 10px; border: none; width: 10%; border-radius: 5px;">Remover</button>
+                    </button>
+                </a>
             </div>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 GameInsing. Todos os direitos reservados.</p>
-    </footer>
-</body>
-</html>
+            {%endfor%}
+            </div>
+    </section>
+</main>
+<footer>
+    <p>© 2024 GameInsing. Todos os direitos reservados.</p>
+</footer>
+
+{% endblock %}

@@ -9,8 +9,8 @@ class JogoForm(forms.ModelForm):
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
             'desenvolvedora': forms.TextInput(attrs={'class': 'form-control'}),
-            'genero': forms.SelectMultiple(attrs={'class': 'form-control'}),
-            'plataforma': forms.SelectMultiple(attrs={'class': 'form-control'}),
+            'genero': forms.Select(attrs={'class': 'form-control'}),
+            'plataforma': forms.Select(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control'}),
             'classificacao': forms.TextInput(attrs={'class': 'form-control'}),
             'data_lancamento': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
