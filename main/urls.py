@@ -18,8 +18,11 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from gameinsight.views import index, novo_jogo, editar_jogo, excluir_jogo
+from gameinsight.views import index, novo_jogo, editar_jogo, excluir_jogo, login_view, logout_view, register
 urlpatterns = [
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+    path('register/', register, name='cadastrar_usuario'),
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('jogo/novo', novo_jogo, name='novo_jogo'),
