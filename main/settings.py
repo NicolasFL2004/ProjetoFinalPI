@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
+from django.contrib.messages import constants as messages
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gameinsight',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +133,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 AUTH_USER_MODEL = 'usuarios.Usuario'
 LOGIN_URL = 'usuarios:login'
 LOGOUT_REDIRECT_URL = 'usuarios:login'
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.INFO: 'alert-info',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}

@@ -1,37 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="<https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css>">
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h3>Cadastro de Usuário</h3>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST">
-                            {% csrf_token %}
-                            <!-- Campos de Cadastro -->
-                            <div class="form-group">
-                                <label for="username">Nome de Usuário</label>
-                                <input type="text" name="username" id="username" class="form-control" required>
-                                {% if form.username.errors %}
-                                    <div class="text-danger">{{ form.username.errors.0 }}</div>
-                                {% endif %}
-                            </div>
-                            <!-- Campos adicionais (CPF, cidade, nome da mãe, endereço, bairro) -->
-                            <button type="submit" class="btn btn-primary btn-block">Registrar</button>
-                        </form>
-                    </div>
-                </div>
+{% extends 'gameinsight/base.html' %}
+
+{% block content %}
+    <div class="main-container">
+        <h2 class="login-title">REGISTRO</h2>
+        <form class="form-login" action="{% url 'usuarios:register' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                {{ form.username }}
             </div>
-        </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="cidade">Cidade</label>
+                {{ form.nome_cidade }}
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                {{ form.password1 }}
+            </div>
+            <div class="form-group">
+                <label for="password">Confirmar senha</label>
+                {{ form.password2 }}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-login">Cadastrar</button>
+            <a href="{% url 'usuarios:login' %}">Já tem conta? Entre</a>
+        </form>
     </div>
-</body>
-</html>
+{% endblock content %}

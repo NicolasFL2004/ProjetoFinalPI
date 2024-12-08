@@ -1,17 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from .models import Jogo, Usuario
 
-class UserBlogCreationForm(UserCreationForm):
-    cpf = forms.CharField(max_length=11, required=True, help_text="Digite seu CPF sem pontos ou traços.")
-    nome_cidade = forms.CharField(max_length=100, required=False)
-    nome_mae = forms.CharField(max_length=100, required=False)
-    endereco = forms.CharField(max_length=255, required=False)
-    nome_bairro = forms.CharField(max_length=100, required=False)
-
-    class Meta:
-        model = Usuario
-        fields = ('username', 'cpf', 'email', 'password1', 'password2', 'nome_cidade', 'nome_mae', 'endereco', 'nome_bairro')
+from .models import Jogo
 
 
 class JogoForm(forms.ModelForm):
