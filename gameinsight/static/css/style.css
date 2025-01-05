@@ -78,3 +78,38 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+/* Estilo para os campos de erro */
+.error-list {
+    color: #ff9800;
+    font: bold;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    padding-left: 15px;
+}
+
+.error-list li {
+    list-style-type: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.btn-login {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
