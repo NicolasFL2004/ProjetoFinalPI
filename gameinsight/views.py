@@ -11,7 +11,7 @@ def index(request):
         'jogos': jogos
  
     }
-    return render(request, 'gameinsight/index.html', contexto)
+    return render(request, 'gameinsight/pages/index.html', contexto)
 
 def novo_jogo(request):
     form = JogoForm()
@@ -25,7 +25,7 @@ def novo_jogo(request):
     contexto = {
         'form': form
     }
-    return render(request, 'gameinsight/avaliacao.html', contexto)
+    return render(request, 'gameinsight/pages/avaliacao.html', contexto)
 
 def editar_jogo(request, id):
     jogo = Jogo.objects.get(id=id)
@@ -41,7 +41,7 @@ def editar_jogo(request, id):
     contexto = {
         'form': form
     }
-    return render(request, 'gameinsight/avaliacao.html', contexto)
+    return render(request, 'gameinsight/pages/avaliacao.html', contexto)
 
 def excluir_jogo(request, id):
     jogo = Jogo.objects.get(id=id)

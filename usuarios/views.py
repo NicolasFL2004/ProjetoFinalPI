@@ -19,7 +19,7 @@ def login_view(request):
         else:
             messages.error(request, 'Usuário ou senha inválidos.')
 
-    return render(request, 'gameinsight/login.html')
+    return render(request, 'usuarios/login.html')
 
 def logout_view(request):
     logout(request)
@@ -35,4 +35,4 @@ def register(request):
     else:
         form = UserBlogCreationForm()
     print(form.errors)
-    return render(request, 'gameinsight/register.html', {'form': form})
+    return render(request, 'usuarios/register.html', {'form': form})
