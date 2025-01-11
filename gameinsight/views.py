@@ -49,3 +49,10 @@ def avaliacao_excluir(request, id):
     avaliacao = Avaliacao.objects.get(id=id)
     avaliacao.delete()
     return redirect('index')
+
+def jogo_detalhes(request, id):
+    jogo = Jogo.objects.get(id=id)
+    contexto = {
+        'jogo': jogo
+    }
+    return render(request, 'gameinsight/pages/jogo_detalhes.html', contexto)
