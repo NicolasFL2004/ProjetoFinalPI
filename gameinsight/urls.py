@@ -2,10 +2,10 @@ from django.urls import path
 
 from . import views
 
-namespace = 'jogos'
+namespace = 'avaliacoes'
 
 urlpatterns = [
-    path('jogo/novo', views.novo_jogo, name='novo_jogo'),
-    path('jogo/editar/<int:id>', views.editar_jogo, name='editar_jogo'),
-    path('jogo/excluir/<int:id>', views.excluir_jogo, name='excluir_jogo'),
+    path('criar/', views.avaliacao_criar, name='avaliacao_criar'),
+    path('atualizar/<int:id>', views.avaliacao_atualizar, name='avaliacao_atualizar'),
+    path('excluir/<int:id>', views.avaliacao_excluir, name='avaliacao_excluir'),
 ]

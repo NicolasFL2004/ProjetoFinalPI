@@ -1,22 +1,15 @@
 from django import forms
 
-from .models import Jogo
+from .models import Avaliacao
 
 
-class JogoForm(forms.ModelForm):
+class AvaliacaoForm(forms.ModelForm):
     class Meta:
-        model = Jogo
-        fields = '__all__'
+        model = Avaliacao
+        fields = ('jogo', 'nota','comentario')
 
         widgets = {
-            'nome': forms.TextInput(attrs={'class': 'form-control'}),
-            'desenvolvedora': forms.TextInput(attrs={'class': 'form-control'}),
-            'genero': forms.Select(attrs={'class': 'form-control'}),
-            'plataforma': forms.Select(attrs={'class': 'form-control'}),
-            'descricao': forms.Textarea(attrs={'class': 'form-control'}),
-            'classificacao': forms.TextInput(attrs={'class': 'form-control'}),
-            'data_lancamento': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'jogo': forms.Select(attrs={'class': 'form-control'}),
             'comentario': forms.Textarea(attrs={'class': 'form-control'}),
             'nota': forms.NumberInput(attrs={'class': 'form-control'}),
-            'capa': forms.FileInput(attrs={'class': 'form-control'}),
         }

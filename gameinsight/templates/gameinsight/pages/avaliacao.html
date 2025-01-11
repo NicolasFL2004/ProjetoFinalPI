@@ -1,58 +1,51 @@
 {% extends "gameinsight/base.html" %}
-{% block content%}
-<main>
-    <section class="featured">
-        <h2>Avaliação de Jogos</h2>
-        <p>Deixe sua opinião sobre os jogos que você jogou!</p>
-    </section>
-    <section>
-        <div class="card" style="max-width: 600px; margin: auto;">
-            <h3>Avalie um Jogo</h3>
-            <form method="post" enctype="multipart/form-data">
-                {%csrf_token %}
-                <div style="margin-bottom: 10px;">
-                    <label for="game-name">Nome do Jogo:</label>
-                    {{form.nome}}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="rating">Capa:</label>
-                    {{form.capa}}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="review">Desenvolvedora:</label>
-                    {{form.desenvolvedora}}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="review">Gênero:</label>
-                    {{form.genero}}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="review">Descrição:</label>
-                    {{form.descricao}}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="review">Classificação:</label>
-                    {{form.classificacao}}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="review">Data de lançamento:</label>
-                    {{form.data_lancamento}}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="review">Plataforma:</label>
-                    {{form.plataforma}}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="review">Nota:</label>
-                    {{form.nota}}
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="review">Comentário:</label>
-                    {{form.comentario}}
-                </div>
-                <button type = 'submit' style="background-color: #e63946; color: #fff; padding: 10px; border: none; width: 100%; border-radius: 5px;">Enviar Avaliação</button>
-            </form>
+
+
+{% block title %} Avaliar jogo {% endblock title %}
+    
+{% block content %}
+<div class="main-container">
+    <h2 class="login-title">Avaliar Jogo</h2>
+    <form class="form-login" action="{% url 'avaliacoes:avaliacao_criar' %}" method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="jogo">Selecione o jogo</label>
+            {{ form.jogo }}
+            {% if form.jogo.errors %}
+                <ul class="error-list">
+                    {% for error in form.jogo.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
-    </section>
-</main>
+
+        <div class="form-group">
+            <label for="comentario">Comentário sobre o jogo</label>
+            {{ form.comentario }}
+            {% if form.comentario.errors %}
+                <ul class="error-list">
+                    {% for error in form.comentario.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="nota">Nota do jogo</label>
+            {{ form.nota }}
+            {% if form.nota.errors %}
+                <ul class="error-list">
+                    {% for error in form.nota.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn-create">Cadastrar avaliação</button>
+    </form>
+</div>
 {% endblock %}

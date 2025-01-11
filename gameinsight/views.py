@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
-from .forms import JogoForm
-from .models import Jogo
+from .forms import AvaliacaoForm
+from .models import Avaliacao, Jogo
 
 
 # Create your views here.
@@ -13,37 +13,39 @@ def index(request):
     }
     return render(request, 'gameinsight/pages/index.html', contexto)
 
-def novo_jogo(request):
-    form = JogoForm()
-
+def avaliacao_criar(request):
     if request.method == 'POST':
-        form = JogoForm(request.POST, request.FILES)
+        form = AvaliacaoForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            avaliacao = form.save(commit=False)
+            avaliacao.usuario = request.user
+            avaliacao.save()
             return redirect('index')
     
+    form = AvaliacaoForm()
+
     contexto = {
         'form': form
     }
     return render(request, 'gameinsight/pages/avaliacao.html', contexto)
 
-def editar_jogo(request, id):
-    jogo = Jogo.objects.get(id=id)
+def avaliacao_atualizar(request, id):
+    avaliacao = Avaliacao.objects.get(id=id)
     
     if request.method == 'POST':
-        form = JogoForm(request.POST, request.FILES, instance=jogo)
+        form = AvaliacaoForm(request.POST, request.FILES, instance=avaliacao)
         if form.is_valid():
             form.save()
             return redirect('index')
     else:
-        form = JogoForm(instance=jogo)
+        form = AvaliacaoForm(instance=avaliacao)
     
     contexto = {
         'form': form
     }
     return render(request, 'gameinsight/pages/avaliacao.html', contexto)
 
-def excluir_jogo(request, id):
-    jogo = Jogo.objects.get(id=id)
-    jogo.delete()
+def avaliacao_excluir(request, id):
+    avaliacao = Avaliacao.objects.get(id=id)
+    avaliacao.delete()
     return redirect('index')

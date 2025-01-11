@@ -1,31 +1,9 @@
-{% extends "gameinsight/base.html" %}
+{% extends 'gameinsight/base.html' %}
+
+{% block title %} Home {% endblock title %}
+
 {% block content %}
-<main>
-    <section>
-        <h2 class="section-title">Suas Avaliações</h2>
-        <div class="grid">
-            {%for jogo in jogos%}
-            <div class="card">
-                
-                {% if jogo.capa.url != '' %}
-                    <img src="{{jogo.capa.url}}" alt="{{jogo.nome}}">
-                {% endif %}
-                <h3>{{jogo.nome}}</h3>
-                <p>Comentário: {{jogo.comentario}}</p>
-                <p>Avaliação: {{jogo.nota}}</p>
-                <a href="{% url 'editar_jogo' jogo.id%}">
-                    <button type="button" style="background-color: #e63946; color: #fff; padding: 10px; border: none; width: 10%; border-radius: 5px;">Editar</button>
-                    </button>
-                </a>
-                <a href="{% url 'excluir_jogo' jogo.id%}">
-                    <button type="button" style="background-color: #e63946; color: #fff; padding: 10px; border: none; width: 10%; border-radius: 5px;">Remover</button>
-                    </button>
-                </a>
-            </div>
-            {%endfor%}
-            </div>
-    </section>
-</main>
-
-
-{% endblock %}
+<div class="main-container">
+        
+</div>
+{% endblock content %}

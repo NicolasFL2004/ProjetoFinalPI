@@ -1,12 +1,14 @@
 <header>
     <ul class="header-container">
-        <li class="item"><a class="link-item" href="{% url 'index' %}">PÁGINA INICIAL</a>
+        <li class="item link-home"><a class="link-item" href="{% url 'index' %}">PÁGINA INICIAL</a>
         </li>
         <input class="form-control search-input" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="q" value="{{ request.GET.q }}">
         <div class="authenticate-links">
             
             {% if request.user.is_authenticated %}
                 <li class="item"><a class="link-item" href="{% url 'usuarios:logout' %}">LOGOUT</a></li>
+                <li class="item"><a class="link-item" 
+                    href="{% url 'avaliacoes:avaliacao_criar' %}">AVALIAR JOGO</a></li>
             {% else %}
                 <li class="item"><a class="link-item" href="{% url 'usuarios:register' %}">INSCREVER-SE</a></li>
                 <li class="item"><a class="link-item" href="{% url 'usuarios:login' %}">LOGIN</a></li>

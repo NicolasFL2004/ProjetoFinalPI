@@ -28,18 +28,23 @@ body {
 
 .authenticate-links {
     display: flex;
-    min-width: 200px;
+    min-width: 250px;
+    gap: 1.5rem;
+
 }
 
 .item {
     font-weight: bold;
     list-style: none;
-    min-width: 150px;
 }
 
 .link-item {
     text-decoration: none;
     color: white;
+}
+
+.link-home {
+    min-width: 200px;
 }
 
 .main-container {
@@ -112,4 +117,23 @@ footer {
 
 .btn-login:hover {
     background-color: #0056b3;
+}
+
+.btn-create {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: 300ms ease-in-out;
+}
+
+.btn-create:hover {
+    background-color: #066cd8;
+}
+
+.btn-login:hover {
+    background-color: #066cd8;
 }
