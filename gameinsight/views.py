@@ -55,4 +55,8 @@ def jogo_detalhes(request, id):
     contexto = {
         'jogo': jogo
     }
+
+    avaliacoes = Avaliacao.objects.filter(jogo=jogo)
+    contexto['avaliacoes'] = avaliacoes
+
     return render(request, 'gameinsight/pages/jogo_detalhes.html', contexto)

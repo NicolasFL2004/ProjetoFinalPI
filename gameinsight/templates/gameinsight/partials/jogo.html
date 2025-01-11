@@ -1,0 +1,13 @@
+<div class="game-group">
+    <div class="capa">
+            <img class="img-jogo" src="{{ jogo.capa.url }}" alt="capa do jogo">  
+    </div>
+    <div class="informations">
+        <div class="nome">
+            <h2 class="game-name">
+                {{ jogo.nome }}
+            </h2>
+        </div>
+        {% include 'gameinsight/partials/media-jogo.html' %}
+    </div>
+</div>

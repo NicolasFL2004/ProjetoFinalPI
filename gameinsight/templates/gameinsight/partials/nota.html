@@ -1,0 +1,39 @@
+<div class="nota">
+    <ul class="stars-nota">
+        {% if avaliacao.nota >= 1.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% else %}
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+        {% endif %}
+        {% if avaliacao.nota >= 2.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% elif avaliacao.nota >= 1.0 %}
+        <li><i class="fa-regular fa-star"></i></li>
+        <li><i class="fa-regular fa-star"></i></li>
+        <li><i class="fa-regular fa-star"></i></li>
+        <li><i class="fa-regular fa-star"></i></li>
+        {% endif %}
+        {% if avaliacao.nota >= 3.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% elif avaliacao.nota >= 2.0 %}
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+        {% endif %}
+        {% if avaliacao.nota >= 4.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% elif avaliacao.nota  >= 3.0 %}
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+        {% endif %} 
+        {% if avaliacao.nota == 5.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% elif avaliacao.nota >= 4.0 %}
+            <li><i class="fa-regular fa-star"></i></li>
+        {% endif %}
+    </ul>
+</div>

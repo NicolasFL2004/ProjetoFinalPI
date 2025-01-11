@@ -1,0 +1,39 @@
+<div class="media">
+    <ul class="stars">
+        {% if jogo.media >= 1.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% else %}
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+        {% endif %}
+        {% if jogo.media >= 2.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% elif jogo.media >= 1.0 %}
+        <li><i class="fa-regular fa-star"></i></li>
+        <li><i class="fa-regular fa-star"></i></li>
+        <li><i class="fa-regular fa-star"></i></li>
+        <li><i class="fa-regular fa-star"></i></li>
+        {% endif %}
+        {% if jogo.media >= 3.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% elif jogo.media >= 2.0 %}
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+        {% endif %}
+        {% if jogo.media >= 4.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% elif jogo.media  >= 3.0 %}
+            <li><i class="fa-regular fa-star"></i></li>
+            <li><i class="fa-regular fa-star"></i></li>
+        {% endif %} 
+        {% if jogo.media == 5.0 %}
+            <li><i class="fa-solid fa-star"></i></li>
+        {% elif jogo.media >= 4.0 %}
+            <li><i class="fa-regular fa-star"></i></li>
+        {% endif %}
+    </ul>
+</div>

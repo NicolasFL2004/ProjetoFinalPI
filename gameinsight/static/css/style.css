@@ -218,3 +218,88 @@ footer {
 .stars li {
     list-style-type: none;
 }
+
+.main-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    place-items: center;
+    border-radius: 10px;
+}
+
+.container-detalhes {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: left;
+    background: #545454;
+    padding-left: 4rem;
+    justify-content: center;
+}
+
+.icon-avaliacao {
+    color: white;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border-radius: 100%;
+}
+
+.item-avaliacao {
+    display: flex;
+    gap: 1rem;
+    margin-top: 5rem;
+    padding-bottom: 2rem;
+}
+
+.description {
+    font-size: 1rem;
+    color: white;
+}
+
+.user-details {
+    position: relative;
+    background-color: #ff0000; /* Vermelho */
+    color: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-details::before{
+    content: '';
+    position: absolute;
+    top: 20px; /* Alinhamento vertical */
+    left: -20px; /* Posição da ponta */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 20px 10px 0;
+    border-color: transparent #ff0000 transparent transparent; /* Cor da ponta */
+}
+
+.nota {
+    display: flex;
+    justify-content: left;
+}
+
+.stars-nota {
+    padding: 0;
+    display: flex;
+    justify-content: left;
+    gap: 5px;
+    color: gold;
+}
+
+.stars-nota li {
+    font-size: 20px; /* Tamanho das estrelas */
+    margin-right: 5px; /* Espaço entre as estrelas */
+    color: gold;
+    list-style: none;
+}

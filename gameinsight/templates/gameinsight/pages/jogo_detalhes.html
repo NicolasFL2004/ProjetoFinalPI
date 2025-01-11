@@ -3,5 +3,22 @@
 {% block title %} Detalhes do jogo {% endblock title %}
 
 {% block content %}
-    <h2>{{ jogo.nome }}</h2>
+    <div class="main-details">
+        <div class="container-detalhes">
+            {% include 'gameinsight/partials/jogo.html' %}
+
+            {% for avaliacao in avaliacoes %}
+                <div class="item-avaliacao">
+                    <h2 class="icon-avaliacao"><i class="fa-regular fa-user"></i></h2>
+                    <div class="user-details">
+                        <h2>{{ avaliacao.usuario.username }}</h2>
+                        {% include 'gameinsight/partials/nota.html' %}
+                        <p class="description">{{ avaliacao.comentario }}</p>
+                    </div>
+                </div>
+                
+            {% endfor %}
+                
+        </div>
+    </div>
 {% endblock content %}
