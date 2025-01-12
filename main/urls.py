@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path("avaliacoes/", include(("gameinsight.urls", "gameinsight"), namespace="avaliacoes")),
-    path('usuarios/', include(('usuarios.urls', 'usuarios'), namespace='usuarios')),
+    path('accounts/', include(('usuarios.urls', 'usuarios'), namespace='usuarios')),
 ]
 
 if settings.DEBUG:

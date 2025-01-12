@@ -19,9 +19,7 @@ class Cidade(models.Model):
 
 class Usuario(AbstractUser):
     cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE, null=True, blank=True, default=None)
-    nome_mae = models.CharField(max_length=100, blank=True, null=True)
-    endereco = models.CharField(max_length=255, blank=True, null=True)
-    nome_bairro = models.CharField(max_length=100, blank=True, null=True)
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True, default=None)   
 
     def __str__(self):
         return self.username

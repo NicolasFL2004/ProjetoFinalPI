@@ -6,9 +6,11 @@
         <div class="authenticate-links">
             
             {% if request.user.is_authenticated %}
-                <li class="item"><a class="link-item" href="{% url 'usuarios:logout' %}">LOGOUT</a></li>
-                <li class="item"><a class="link-item" 
+                <li class="item link-avaliar"><a class="link-item" 
                     href="{% url 'avaliacoes:avaliacao_criar' %}">AVALIAR JOGO</a></li>
+                <li class="item"><a class="link-item" href="{% url 'usuarios:logout' %}">LOGOUT</a></li>
+                <li class="item"><a class="link-item" href="{% url 'usuarios:perfil' %}">PERFIL</a></li>
+
             {% else %}
                 <li class="item"><a class="link-item" href="{% url 'usuarios:register' %}">INSCREVER-SE</a></li>
                 <li class="item"><a class="link-item" href="{% url 'usuarios:login' %}">LOGIN</a></li>

@@ -30,12 +30,17 @@ body {
     display: flex;
     min-width: 250px;
     gap: 1.5rem;
+    margin-right: 2rem;
 
 }
 
 .item {
     font-weight: bold;
     list-style: none;
+}
+
+.link-avaliar {
+    min-width: 115px;
 }
 
 .link-item {
@@ -128,6 +133,23 @@ footer {
     font-size: 16px;
     border-radius: 4px;
     transition: 300ms ease-in-out;
+}
+
+.btn-edit {
+    background-color: rgb(207, 12, 12);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    text-decoration: none;
+    height: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: 300ms ease-in-out;
+}
+
+.btn-edit:hover {
+    background-color: rgb(190, 9, 9);
 }
 
 .btn-create:hover {
@@ -302,4 +324,133 @@ footer {
     margin-right: 5px; /* Espaço entre as estrelas */
     color: gold;
     list-style: none;
+}
+
+.profile-container {
+    width: 80%;
+    margin: 2rem auto;
+}
+
+.informations-profile {
+    background: #545454;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.profile-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.icon-profile {
+    width: 180px;
+    height: 180px;
+    font-size: 6rem;
+    border-radius: 100%;
+    background-color: rgb(207, 12, 12);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.id-profile {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.date-profile {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.user-name {
+    margin-left: 1rem;
+}
+
+.jogo-img {
+    width: 200px;
+}
+
+.last-coment {
+    display: flex;
+    gap: 1rem;  
+}
+
+.title-comment {
+    margin-bottom: 2rem;
+}
+
+.edit-container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 2rem auto;
+}   
+
+.edit-container {
+    background: #545454;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.edit-container h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.edit-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: white;
+}
+
+.edit-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.edit-container input:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.edit-container button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    margin-top: 1rem;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.edit-container button:hover {
+    background-color: #0056b3;
+}
+
+.edit-container .errorlist {
+    color: red;
+    margin-bottom: 15px;
+    font-size: 14px;
 }

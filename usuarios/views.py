@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
-
-from .forms import UserBlogCreationForm
+from gameinsight.models import Avaliacao
+from .forms import UserBlogCreationForm, UserBlogEditForm
 
 
 def login_view(request):
@@ -36,3 +36,28 @@ def register(request):
         form = UserBlogCreationForm()
     print(form.errors)
     return render(request, 'usuarios/register.html', {'form': form})
+
+def perfil(request):
+    avaliacao = Avaliacao.objects.filter(usuario=request.user).last()
+
+    contexto = {
+        'avaliacao': avaliacao
+    }
+    return render(request, 'usuarios/perfil.html', contexto)
+
+def perfil_edit(request):
+    user = request.user
+    if request.method == 'POST':
+        form = UserBlogEditForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            print(form.cleaned_data)
+            user = form.save(commit=False)
+            if form.cleaned_data.get("password1"):
+                user.set_password(form.cleaned_data["password1"])
+            user.save()
+            messages.success(request, 'Perfil atualizado com sucesso!')
+            return redirect('usuarios:perfil')
+    else:
+        form = UserBlogEditForm(instance=user)
+
+    return render(request, 'usuarios/perfil-edit.html', {'form': form})

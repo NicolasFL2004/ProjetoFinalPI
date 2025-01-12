@@ -35,4 +35,43 @@ class UserBlogCreationForm(UserCreationForm):
             ), 
             'cidade': forms.Select(),
         }
-    
+
+class UserBlogEditForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            if not hasattr(field.widget.attrs, 'class'):
+                field.widget.attrs.update({'class': 'form-control'})
+
+
+    password1 = forms.CharField(
+        required=False,
+        widget=forms.PasswordInput(attrs={'placeholder': 'Nova senha'}),
+        label="Nova senha",
+    )
+    password2 = forms.CharField(
+        required=False,
+        widget=forms.PasswordInput(attrs={'placeholder': 'Confirme sua senha'}),
+        label="Confirmação da nova senha",
+    )
+
+    class Meta:
+        model = Usuario
+        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2', 'cidade')
+
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={'placeholder': 'Nome'}
+            ),
+            'last_name': forms.TextInput(
+                attrs={'placeholder': 'Sobrenome'}
+            ),
+            'username': forms.TextInput(
+                attrs={'placeholder': 'Usuário'}
+            ),
+            'email': forms.EmailInput(
+                attrs={'placeholder': 'Email'}
+            ), 
+            'cidade': forms.Select(),
+        }

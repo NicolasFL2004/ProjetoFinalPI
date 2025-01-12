@@ -1,0 +1,25 @@
+{% extends 'gameinsight/base.html' %}
+
+{% block title %}
+    Editar Perfil
+{% endblock title %}
+
+{% block content %}
+
+    <div class="edit-container">
+        <h1>Editar Perfil</h1>
+        <form method="post" action="{% url 'usuarios:perfil_edit' %}">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                <div>
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="errorlist">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+{% endblock content %}
