@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from gameinsight.models import Avaliacao
 from .forms import UserBlogCreationForm, UserBlogEditForm
-
+from django.contrib.auth.decorators import login_required
 
 def login_view(request):
     if request.method == 'POST':
@@ -21,8 +21,11 @@ def login_view(request):
 
     return render(request, 'usuarios/login.html')
 
+
+@login_required(login_url='usuarios:login')
 def logout_view(request):
     logout(request)
+    messages.success(request, 'Logout realizado com sucesso!')
     return redirect('usuarios:login')
 
 def register(request):
@@ -37,6 +40,8 @@ def register(request):
     print(form.errors)
     return render(request, 'usuarios/register.html', {'form': form})
 
+
+@login_required(login_url='usuarios:login')
 def perfil(request):
     avaliacao = Avaliacao.objects.filter(usuario=request.user).last()
 
@@ -45,6 +50,8 @@ def perfil(request):
     }
     return render(request, 'usuarios/perfil.html', contexto)
 
+
+@login_required(login_url='usuarios:login')
 def perfil_edit(request):
     user = request.user
     if request.method == 'POST':

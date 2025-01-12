@@ -1,18 +1,26 @@
 from django.shortcuts import redirect, render
-
+from django.contrib.auth.decorators import login_required
 from .forms import AvaliacaoForm
+from django.db.models import Q  
 from .models import Avaliacao, Jogo
+from django.contrib import messages
 
-
-# Create your views here.
 def index(request):
-    jogos = Jogo.objects.all()
+    search_term = request.GET.get('q')
+
+    if search_term:
+        jogos = Jogo.objects.filter(Q(nome__icontains=search_term))
+    else:
+        jogos = Jogo.objects.all()
+
     contexto = {
         'jogos': jogos
  
     }
     return render(request, 'gameinsight/pages/index.html', contexto)
 
+
+@login_required(login_url='usuarios:login')
 def avaliacao_criar(request):
     if request.method == 'POST':
         form = AvaliacaoForm(request.POST, request.FILES)
@@ -20,6 +28,7 @@ def avaliacao_criar(request):
             avaliacao = form.save(commit=False)
             avaliacao.usuario = request.user
             avaliacao.save()
+            messages.success(request, 'Avaliação realizada com sucesso!')
             return redirect('index')
     
     form = AvaliacaoForm()
@@ -29,6 +38,8 @@ def avaliacao_criar(request):
     }
     return render(request, 'gameinsight/pages/avaliacao.html', contexto)
 
+
+@login_required(login_url='usuarios:login')
 def avaliacao_atualizar(request, id):
     avaliacao = Avaliacao.objects.get(id=id)
     
@@ -36,6 +47,7 @@ def avaliacao_atualizar(request, id):
         form = AvaliacaoForm(request.POST, request.FILES, instance=avaliacao)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Avaliação atualizada com sucesso!')
             return redirect('index')
     else:
         form = AvaliacaoForm(instance=avaliacao)
@@ -45,11 +57,16 @@ def avaliacao_atualizar(request, id):
     }
     return render(request, 'gameinsight/pages/avaliacao.html', contexto)
 
+
+@login_required(login_url='usuarios:login')
 def avaliacao_excluir(request, id):
     avaliacao = Avaliacao.objects.get(id=id)
     avaliacao.delete()
+    messages.success(request, 'Avaliação excluída com sucesso!')
     return redirect('index')
 
+
+@login_required(login_url='usuarios:login')
 def jogo_detalhes(request, id):
     jogo = Jogo.objects.get(id=id)
     contexto = {

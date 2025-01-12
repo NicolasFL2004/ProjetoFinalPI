@@ -2,7 +2,9 @@
     <ul class="header-container">
         <li class="item link-home"><a class="link-item" href="{% url 'index' %}">PÁGINA INICIAL</a>
         </li>
-        <input class="form-control search-input" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="q" value="{{ request.GET.q }}">
+        <form action="{% url 'index' %}" method="get" class="search-form">
+            <input class="form-control search-input" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="q" value="{{ request.GET.q }}">
+        </form>
         <div class="authenticate-links">
             
             {% if request.user.is_authenticated %}
