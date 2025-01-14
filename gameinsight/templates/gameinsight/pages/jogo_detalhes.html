@@ -3,22 +3,32 @@
 {% block title %} Detalhes do jogo {% endblock title %}
 
 {% block content %}
-    <div class="main-details">
-        <div class="container-detalhes">
-            {% include 'gameinsight/partials/jogo.html' %}
+<div class="main-details">
+    <div class="container-detalhes">
+        {% include 'gameinsight/partials/jogo.html' %}
 
-            {% for avaliacao in avaliacoes %}
-                <div class="item-avaliacao">
-                    <h2 class="icon-avaliacao"><i class="fa-regular fa-user"></i></h2>
-                    <div class="user-details">
-                        <h2>{{ avaliacao.usuario.username }}</h2>
-                        {% include 'gameinsight/partials/nota.html' %}
-                        <p class="description">{{ avaliacao.comentario }}</p>
-                    </div>
-                </div>
-                
-            {% endfor %}
-                
+        <div class="button-group-right">
+            <a href="{% url 'jogos:jogo_atualizar' jogo.id %}" class="btn btn-edit">
+                <i class="fa-solid fa-pen-to-square"></i> Editar
+            </a>
+            <form action="{% url 'jogos:jogo_excluir' jogo.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-delete">
+                    <i class="fa-solid fa-trash"></i> Excluir
+                </button>
+            </form>
         </div>
+
+        {% for avaliacao in avaliacoes %}
+            <div class="item-avaliacao">
+                <h2 class="icon-avaliacao"><i class="fa-regular fa-user"></i></h2>
+                <div class="user-details">
+                    <h2>{{ avaliacao.usuario.username }}</h2>
+                    {% include 'gameinsight/partials/nota.html' %}
+                    <p class="description">{{ avaliacao.comentario }}</p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock content %}

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gameinsight',
     'usuarios',
+    'jogos',
+    "rolepermissions",
 ]
 
 MIDDLEWARE = [

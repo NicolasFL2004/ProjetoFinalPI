@@ -1,3 +1,5 @@
+{% load permission_tags %}
+
 <header>
     <ul class="header-container">
         <li class="item link-home"><a class="link-item" href="{% url 'index' %}">PÁGINA INICIAL</a>
@@ -8,9 +10,12 @@
         <div class="authenticate-links">
             
             {% if request.user.is_authenticated %}
+                {% if user|has_role:'Admin' %}
+                    <li class="item link-criar"><a class="link-item" href="{% url 'jogos:jogo_criar' %}">CRIAR JOGO</a></li>
+                {% endif %}
                 <li class="item link-avaliar"><a class="link-item" 
                     href="{% url 'avaliacoes:avaliacao_criar' %}">AVALIAR JOGO</a></li>
-                <li class="item"><a class="link-item" href="{% url 'usuarios:logout' %}">LOGOUT</a></li>
+                <li class="item logout-item"><a class="link-item" href="{% url 'usuarios:logout' %}">LOGOUT</a></li>
                 <li class="item"><a class="link-item" href="{% url 'usuarios:perfil' %}">PERFIL</a></li>
 
             {% else %}

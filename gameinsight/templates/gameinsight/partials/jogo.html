@@ -1,6 +1,8 @@
 <div class="game-group">
     <div class="capa">
-            <img class="img-jogo" src="{{ jogo.capa.url }}" alt="capa do jogo">  
+        {% if jogo.capa.url != '' %}
+            <img class="img-jogo" src="{{ jogo.capa.url }}" alt="capa do jogo"> 
+        {% endif %} 
     </div>
     <div class="informations">
         <div class="nome">

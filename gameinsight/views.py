@@ -64,16 +64,3 @@ def avaliacao_excluir(request, id):
     avaliacao.delete()
     messages.success(request, 'Avaliação excluída com sucesso!')
     return redirect('index')
-
-
-@login_required(login_url='usuarios:login')
-def jogo_detalhes(request, id):
-    jogo = Jogo.objects.get(id=id)
-    contexto = {
-        'jogo': jogo
-    }
-
-    avaliacoes = Avaliacao.objects.filter(jogo=jogo)
-    contexto['avaliacoes'] = avaliacoes
-
-    return render(request, 'gameinsight/pages/jogo_detalhes.html', contexto)

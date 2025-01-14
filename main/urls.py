@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path("avaliacoes/", include(("gameinsight.urls", "gameinsight"), namespace="avaliacoes")),
+    path("jogos/", include(("jogos.urls", "jogos"), namespace="jogos")),
     path('accounts/', include(('usuarios.urls', 'usuarios'), namespace='usuarios')),
 ]
 

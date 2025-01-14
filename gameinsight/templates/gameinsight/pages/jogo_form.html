@@ -1,0 +1,110 @@
+{% extends "gameinsight/base.html" %}
+
+{% block title %} Cadastrar Jogo {% endblock title %}
+
+{% block content %}
+<div class="main-container">
+    <h2 class="login-title">Cadastrar Novo Jogo</h2>
+    <form class="form-login"  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="nome">Nome do jogo</label>
+            {{ form.nome }}
+            {% if form.nome.errors %}
+                <ul class="error-list">
+                    {% for error in form.nome.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="desenvolvedora">Desenvolvedora</label>
+            {{ form.desenvolvedora }}
+            {% if form.desenvolvedora.errors %}
+                <ul class="error-list">
+                    {% for error in form.desenvolvedora.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="genero">Gênero</label>
+            {{ form.genero }}
+            {% if form.genero.errors %}
+                <ul class="error-list">
+                    {% for error in form.genero.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="data_lancamento">Data de Lançamento</label>
+            {{ form.data_lancamento }}
+            {% if form.data_lancamento.errors %}
+                <ul class="error-list">
+                    {% for error in form.data_lancamento.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            {{ form.descricao }}
+            {% if form.descricao.errors %}
+                <ul class="error-list">
+                    {% for error in form.descricao.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="plataforma">Plataforma</label>
+            {{ form.plataforma }}
+            {% if form.plataforma.errors %}
+                <ul class="error-list">
+                    {% for error in form.plataforma.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="classificacao">Classificação Indicativa</label>
+            {{ form.classificacao }}
+            {% if form.classificacao.errors %}
+                <ul class="error-list">
+                    {% for error in form.classificacao.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="capa">Capa do Jogo</label>
+            {{ form.capa }}
+            {% if form.capa.errors %}
+                <ul class="error-list">
+                    {% for error in form.capa.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn-create">Cadastrar Jogo</button>
+    </form>
+</div>
+{% endblock %}

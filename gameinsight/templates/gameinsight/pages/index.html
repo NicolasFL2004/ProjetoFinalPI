@@ -6,7 +6,7 @@
 <div class="main-container-jogos">
         
     {% for jogo in jogos %}
-        <a class="jogo-container" href="{% url 'avaliacoes:jogo_detalhes' jogo.id %}">
+        <a class="jogo-container" href="{% url 'jogos:jogo_detalhes' jogo.id %}">
             {% include 'gameinsight/partials/jogo.html' %}
         </a>
     {% endfor %}
