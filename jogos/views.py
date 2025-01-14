@@ -4,6 +4,8 @@ from gameinsight.forms import JogoForm
 from rolepermissions.decorators import has_role_decorator
 from gameinsight.models import Jogo, Avaliacao
 from django.contrib import messages
+from django.db.models import Case, When, Value, IntegerField
+
 
 
 @login_required(login_url='usuarios:login')
@@ -13,7 +15,14 @@ def jogo_detalhes(request, id):
         'jogo': jogo
     }
 
-    avaliacoes = Avaliacao.objects.filter(jogo=jogo)
+    avaliacoes = Avaliacao.objects.filter(jogo=jogo).annotate(
+        prioridade=Case(
+            When(usuario=request.user, then=Value(1)),
+            default=Value(2),
+            output_field=IntegerField(),
+        )
+    ).order_by('prioridade', '-id')
+
     contexto['avaliacoes'] = avaliacoes
 
     return render(request, 'gameinsight/pages/jogo_detalhes.html', contexto)

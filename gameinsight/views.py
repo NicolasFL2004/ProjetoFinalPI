@@ -34,7 +34,7 @@ def avaliacao_criar(request):
             avaliacao.usuario = request.user
             avaliacao.save()
             messages.success(request, 'Avaliação realizada com sucesso!')
-            return redirect('index')
+            return redirect('jogos:jogo_detalhes', id=avaliacao.jogo.id)
     
     form = AvaliacaoForm()
 
@@ -53,7 +53,8 @@ def avaliacao_atualizar(request, id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Avaliação atualizada com sucesso!')
-            return redirect('index')
+            return redirect('jogos:jogo_detalhes', id=avaliacao.jogo.id)
+        print(form.errors)
     else:
         form = AvaliacaoForm(instance=avaliacao)
     
@@ -68,4 +69,4 @@ def avaliacao_excluir(request, id):
     avaliacao = Avaliacao.objects.get(id=id)
     avaliacao.delete()
     messages.success(request, 'Avaliação excluída com sucesso!')
-    return redirect('index')
+    return redirect('jogos:jogo_detalhes', id=avaliacao.jogo.id)

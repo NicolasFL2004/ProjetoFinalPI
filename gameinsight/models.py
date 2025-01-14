@@ -53,7 +53,3 @@ class Avaliacao(models.Model):
 
     def __str__(self):
         return f"Jogo: {self.jogo.nome} - Avaliação de: {self.usuario.username}"
-
-    def clean(self):
-        if self.usuario and Avaliacao.objects.filter(jogo=self.jogo, usuario=self.usuario).exists():
-            raise ValidationError('Você já fez uma avaliação para este jogo.')

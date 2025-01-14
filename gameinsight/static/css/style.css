@@ -594,6 +594,41 @@ footer {
     font-weight: bold;
 }
 
+.btn-edit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.top-card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-edit:hover {
+    background-color: #45a049;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+.avaliacao-actions {
+    margin-top: 10px;
+}
+
+
 
 @keyframes fade-out {
     0% {
