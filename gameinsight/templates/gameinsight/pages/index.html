@@ -11,4 +11,30 @@
         </a>
     {% endfor %}
 </div>
+
+<div class="pagination-container">
+    <nav>
+        <ul class="pagination">
+            {% if jogos.has_previous %}
+                <li>
+                    <a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="pagination-link">Primeira</a>
+                </li>
+                <li>
+                    <a href="?page={{ jogos.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="pagination-link">Anterior</a>
+                </li>
+            {% endif %}
+
+            <li class="current-page">Página {{ jogos.number }} de {{ jogos.paginator.num_pages }}</li>
+
+            {% if jogos.has_next %}
+                <li>
+                    <a href="?page={{ jogos.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="pagination-link">Próxima</a>
+                </li>
+                <li>
+                    <a href="?page={{ jogos.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="pagination-link">Última</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div
 {% endblock content %}

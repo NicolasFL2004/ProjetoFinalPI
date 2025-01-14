@@ -5,17 +5,22 @@ from django.db.models import Q
 from .models import Avaliacao, Jogo
 from django.contrib import messages
 
+from django.core.paginator import Paginator
+
 def index(request):
     search_term = request.GET.get('q')
+    page_number = request.GET.get('page') 
 
     if search_term:
         jogos = Jogo.objects.filter(Q(nome__icontains=search_term))
     else:
         jogos = Jogo.objects.all()
 
+    paginator = Paginator(jogos, 5)
+    jogos_paginados = paginator.get_page(page_number)
+
     contexto = {
-        'jogos': jogos
- 
+        'jogos': jogos_paginados
     }
     return render(request, 'gameinsight/pages/index.html', contexto)
 
