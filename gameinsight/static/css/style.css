@@ -23,7 +23,7 @@ body {
     width: 100%;
     align-items: center;
     margin: 5px;
-    gap: 20%;
+    gap: 10%;
 }
 
 .authenticate-links {
@@ -499,7 +499,7 @@ footer {
 
 .search-form {
     display: flex;
-    width: 100%;
+    width: 60%;
 }
 
 .button-group-right {

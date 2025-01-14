@@ -26,14 +26,19 @@
             </div>
             <div class="bottom-profile">
                 <h3 class="title-comment">último comentário:</h3>
-                <div class="last-coment">
-                    <div class="img-jogo">
-                        <img src="{{ avaliacao.jogo.capa.url }}" alt="jogo-img" class="jogo-img">
+                
+                {% if avaliacao %}
+                    <div class="last-coment">
+                        <div class="img-jogo">
+                            <img src="{{ avaliacao.jogo.capa.url }}" alt="jogo-img" class="jogo-img">
+                        </div>
+                        <div class="user-details">
+                            <p>{{ avaliacao.comentario }}</p>
+                        </div>
                     </div>
-                    <div class="user-details">
-                        <p>{{ avaliacao.comentario }}</p>
-                    </div>
-                </div>
+                {% else %}
+                    <p>Nenhum comentário ainda.</p>
+                {% endif %}
             </div>
         </div>
     </div>
